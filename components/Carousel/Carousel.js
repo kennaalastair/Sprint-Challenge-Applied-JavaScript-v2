@@ -9,11 +9,33 @@
 
 /* HTML:
   <div class="carousel">
-    <div class="left-button"> < </div>
+    <div class="left-button"></div>
     <img src="./assets/carousel/mountains.jpeg" />
     <img src="./assets/carousel/computer.jpeg" />
     <img src="./assets/carousel/trees.jpeg" />
     <img src="./assets/carousel/turntable.jpeg" />
-    <div class="right-button"> > </div>
+    <div class="right-button"></div>
   </div>
 */
+function Carousel() {
+  const carousel = document.createElement('div'),
+        leftBtn = document.createElement('div'),
+        rightBtn = document.createElement('div');
+  const img1 = document.createElement('img'),
+        img2 = document.createElement('img'),
+        img3 = document.createElement('img'),
+        img4 = document.createElement('img');
+  
+  carousel.classList.add('carousel');
+  leftBtn.classList.add('left-button');
+  rightBtn.classList.add('right-button');
+
+  carousel.append(
+    leftBtn,
+    rightBtn,
+    img1,
+    img2,
+    img3,
+    img4
+  )
+}
