@@ -21,42 +21,44 @@
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
     .then(res => {
         console.log('card data: ', res.data.articles);
-        res.data.articles.forEach(article => {
-            articles.append(Card(article));
-            
-        })
+        let articles = res.data.articles;
+        for (topic in articles) {
+            articles[topic].forEach(article => {
+                entry.append(Card(article));
+            });
+        }
     })
     .catch(err => console.log('API is not working, try again later', err));
 
 function Card(article) {
     const card = document.createElement('div');
-    card.classList.add('card');
-
     const headline = document.createElement('div');
-    headline.classList.add('headline');
-
-    const author = document.createElement('div');
-    author.classList.add('author');
-
+    const authorContainer = document.createElement('div');
     const imageContainer = document.createElement('div');
-    imageContainer.classList.add('image-container');
-
-    const avatar = document.createElement('img');
-
+    const authorImg = document.createElement('img');
     const authorName = document.createElement('span');
-    // authorName.textContent = `By ${}`;
-
+    //card
+    card.classList.add('card');
+    //headline
+    headline.classList.add('headline');
+    headline.textContent = article.headline;
+    //author info
+    authorContainer.classList.add('author');
+    imageContainer.classList.add('image-container');
+    authorImg.src = article.authorPhoto;
+    authorName.textContent = `By ${article.authorName}`;
+    //put elements together in order
     card.append(
         headline,
-        author
+        imageContainer
     );
-    author.append(
+    authorContainer.append(
         imageContainer,
         authorName
     );
-    imageContainer.append(avatar);
+    imageContainer.append(authorImg);
 
     return card;
 }
 
-const articles = document.querySelector('.cards-container');
+const entry = document.querySelector('.cards-container');
