@@ -21,6 +21,7 @@
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
     .then(res => {
         console.log('card data: ', res.data.articles);
+        console.log(res);
         let articles = res.data.articles;
         for (topic in articles) {
             articles[topic].forEach(article => {

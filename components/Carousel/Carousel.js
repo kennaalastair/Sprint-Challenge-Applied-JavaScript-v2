@@ -30,6 +30,11 @@ function Carousel() {
   leftBtn.classList.add('left-button');
   rightBtn.classList.add('right-button');
 
+  img1.src = './assets/carousel/mountains.jpeg';
+  img2.src = './assets/carousel/computer.jpeg';
+  img3.src = './assets/carousel/trees.jpeg';
+  img4.src = './assets/carousel/turntable.jpeg';
+
   carousel.append(
     leftBtn,
     rightBtn,
@@ -38,4 +43,9 @@ function Carousel() {
     img3,
     img4
   )
+
+  return carousel;
 }
+
+const carouselContainer = document.querySelector('.carousel-container');
+carouselContainer.append(Carousel());
